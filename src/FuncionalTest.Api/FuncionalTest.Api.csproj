@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Folder Include="Configuration\" />
+    <Folder Include="Controllers\" />
     <Folder Include="Validations\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>

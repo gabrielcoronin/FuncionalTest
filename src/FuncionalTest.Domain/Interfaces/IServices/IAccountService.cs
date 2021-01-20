@@ -1,4 +1,5 @@
-﻿using FuncionalTest.Domain.Models;
+﻿using FuncionalTest.Domain.Commands;
+using FuncionalTest.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
