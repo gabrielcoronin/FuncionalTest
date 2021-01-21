@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuncionalTest.Data", "src\FuncionalTest.Data\FuncionalTest.Data.csproj", "{BC18567A-FA0E-49E0-9FE8-381E2FF79C5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuncionalTest.Data", "src\FuncionalTest.Data\FuncionalTest.Data.csproj", "{BC18567A-FA0E-49E0-9FE8-381E2FF79C5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuncionalTest.Domain", "src\FuncionalTest.Domain\FuncionalTest.Domain.csproj", "{2B0ADFE7-1CCC-4958-9016-FF8D296A9677}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuncionalTest.Domain", "src\FuncionalTest.Domain\FuncionalTest.Domain.csproj", "{2B0ADFE7-1CCC-4958-9016-FF8D296A9677}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuncionalTest.Test", "FuncionalTest.Test\FuncionalTest.Test.csproj", "{33091961-6364-413E-8D0E-89C2C05BC937}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuncionalTest.Api", "src\FuncionalTest.Api\FuncionalTest.Api.csproj", "{ACE7B669-9478-41BD-AFC0-D0D43BBC5CBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuncionalTest.Api", "src\FuncionalTest.Api\FuncionalTest.Api.csproj", "{ACE7B669-9478-41BD-AFC0-D0D43BBC5CBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuncionalTest.Test", "src\FuncionalTest.Test\FuncionalTest.Test.csproj", "{2AF76339-5642-488B-8F3F-B19F37936A65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{2B0ADFE7-1CCC-4958-9016-FF8D296A9677}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B0ADFE7-1CCC-4958-9016-FF8D296A9677}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B0ADFE7-1CCC-4958-9016-FF8D296A9677}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33091961-6364-413E-8D0E-89C2C05BC937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33091961-6364-413E-8D0E-89C2C05BC937}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33091961-6364-413E-8D0E-89C2C05BC937}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33091961-6364-413E-8D0E-89C2C05BC937}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ACE7B669-9478-41BD-AFC0-D0D43BBC5CBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ACE7B669-9478-41BD-AFC0-D0D43BBC5CBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACE7B669-9478-41BD-AFC0-D0D43BBC5CBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACE7B669-9478-41BD-AFC0-D0D43BBC5CBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AF76339-5642-488B-8F3F-B19F37936A65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AF76339-5642-488B-8F3F-B19F37936A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AF76339-5642-488B-8F3F-B19F37936A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AF76339-5642-488B-8F3F-B19F37936A65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

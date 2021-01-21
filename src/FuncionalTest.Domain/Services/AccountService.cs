@@ -33,6 +33,9 @@ namespace FuncionalTest.Domain.Services
         {
             var conta = _accountRepository.BuscarConta(command.Account);
 
+            if (command.Account.Id == null || conta.Id == null)
+                return Notification.CreateError(message: "Conta inválida");
+
             conta.Saldo += command.Valor;
             command.Account.Saldo = conta.Saldo;
 
@@ -47,6 +50,9 @@ namespace FuncionalTest.Domain.Services
         public Notification Sacar(AccountCommand command)
         {
             var conta = _accountRepository.BuscarConta(command.Account);
+
+            if (command.Account.Id == null || conta.Id == null) 
+                return Notification.CreateError(message: "Conta inválida");
 
             if (conta.Saldo < command.Valor || conta.Saldo <= 0)
                 return Notification.CreateError(message: "O valor que você deseja sacar ultrapassar o limite de saldo da conta, tente outro valor.");
@@ -65,6 +71,9 @@ namespace FuncionalTest.Domain.Services
         public Notification VerificarSaldo(VerificarSaldoCommand command)
         {
             var conta = _accountRepository.BuscarConta(command.Account);
+
+            if (command.Account.Id == null || conta.Id == null)
+                return Notification.CreateError(message: "Conta inválida");
 
             return Notification.CreateSuccess(null, null, 200,
                 $"Conta -> { command.Account.Id}\n" +
