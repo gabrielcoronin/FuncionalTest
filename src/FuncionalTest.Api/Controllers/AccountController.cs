@@ -25,24 +25,27 @@ namespace FuncionalTest.Api.Controllers
         [HttpGet]
         public async Task<ActionResult> VerificarSaldo(AccountModel model)
         {
-
+            throw new System.NotImplementedException();
         }
 
         [HttpPatch]
         public async Task<ActionResult> Sacar(AccountModel model)
-        { 
-            
+        {
+            throw new System.NotImplementedException();
+
         }
 
         [HttpPatch]
-        public async Task<ActionResult> Depositar(AccountModel model)
+        public async Task<IActionResult> Depositar(AccountModel model)
         {
+            throw new System.NotImplementedException();
 
         }
 
         [HttpPost]
         public async Task<ActionResult> CriarConta (AccountModel model)
         {
+            throw new System.NotImplementedException();
 
         }
 
