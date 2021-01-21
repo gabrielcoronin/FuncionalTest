@@ -62,14 +62,11 @@ namespace FuncionalTest.Api.Controllers
         [Route("criarConta")]
         public IActionResult Criarconta()
         {            
-
             var notification = _accountService.CriarConta();
 
             if (notification.Success) return Ok(notification);
 
             return BadRequest(notification);
         }
-
-
     }
 }

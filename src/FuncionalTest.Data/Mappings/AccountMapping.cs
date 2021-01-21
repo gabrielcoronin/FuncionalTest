@@ -8,7 +8,7 @@ namespace FuncionalTest.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Account> builder)
         {
-            builder.HasKey(p => p.Id);
+            builder.Property(p => p.Id);
 
             builder.Property(c => c.Saldo)
                 .IsRequired();
