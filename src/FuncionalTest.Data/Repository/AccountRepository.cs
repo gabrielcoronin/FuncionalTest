@@ -16,9 +16,10 @@ namespace FuncionalTest.Data.Repository
 
         public async Task<Account> BuscarConta(Account account)
         {
-            return await _dbContext.Accounts
+            await _dbContext.Accounts
                 .AsNoTracking()
                 .FirstOrDefaultAsync(c => c.Id == account.Id);
+            return account;
         }
 
         public async Task<Account> CriarConta(Account account)
