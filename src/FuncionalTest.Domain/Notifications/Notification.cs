@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FuncionalTest.Domain.Notification
+namespace FuncionalTest.Domain.Notifications
 {
     public class Notification
     {

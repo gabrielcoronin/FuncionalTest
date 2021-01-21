@@ -1,52 +1,73 @@
 ﻿using AutoMapper;
 using FuncionalTest.Api.ViewModels;
-using FuncionalTest.Domain.Interfaces.IRepositories;
+using FuncionalTest.Domain.Commands;
 using FuncionalTest.Domain.Interfaces.IServices;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace FuncionalTest.Api.Controllers
 {
     [Microsoft.AspNetCore.Components.Route("api/[controller]")]
-    public class AccountController
+    [ApiController]
+    public class AccountController : Controller
     {
-        private readonly IAccountRepository _accountRepository;
         private readonly IAccountService _accountService;
         private readonly IMapper _mapper;
 
-
-        public AccountController(IAccountRepository accountRepository, IAccountService accountService, IMapper mapper = null)
+        public AccountController(IAccountService accountService, IMapper mapper = null)
         {
-            _accountRepository = accountRepository;
             _accountService = accountService;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult> VerificarSaldo(AccountModel model)
+        [Route("saldo")]
+        public IActionResult VerificarSaldo(AccountModel model)
         {
-            throw new System.NotImplementedException();
+            var command = _mapper.Map<VerificarSaldoCommand>(model);
+
+            var notification = _accountService.VerificarSaldo(command);
+
+            if (notification.Success) return Ok(notification);
+
+            return BadRequest(notification);
         }
 
         [HttpPatch]
-        public async Task<ActionResult> Sacar(AccountModel model)
+        [Route("sacar")]
+        public IActionResult Sacar(AccountModel model)
         {
-            throw new System.NotImplementedException();
+            var command = _mapper.Map<SacarCommand>(model);
 
+            var notification = _accountService.Sacar(command);
+
+            if (notification.Success) return Ok(notification);
+
+            return BadRequest(notification);
         }
 
         [HttpPatch]
-        public async Task<IActionResult> Depositar(AccountModel model)
+        [Route("depositar")]
+        public IActionResult Depositar(AccountModel model)
         {
-            throw new System.NotImplementedException();
+            var command = _mapper.Map<DepositarCommand>(model);
 
+            var notification = _accountService.Depositar(command);
+
+            if (notification.Success) return Ok(notification);
+
+            return BadRequest(notification);
         }
 
         [HttpPost]
-        public async Task<ActionResult> CriarConta (AccountModel model)
-        {
-            throw new System.NotImplementedException();
+        [Route("criarConta")]
+        public IActionResult Criarconta()
+        {            
 
+            var notification = _accountService.CriarConta();
+
+            if (notification.Success) return Ok(notification);
+
+            return BadRequest(notification);
         }
 
 

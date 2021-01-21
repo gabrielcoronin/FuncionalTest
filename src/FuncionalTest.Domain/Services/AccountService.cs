@@ -1,23 +1,27 @@
 ﻿using FuncionalTest.Domain.Commands;
 using FuncionalTest.Domain.Interfaces.IServices;
-using FuncionalTest.Domain.Models;
-using System.Threading.Tasks;
+using FuncionalTest.Domain.Notifications;
 
 namespace FuncionalTest.Domain.Services
 {
     public class AccountService : IAccountService
     {
-        public async Task<Account> Depositar(DepositarCommand command)
+        public Notification CriarConta()
         {
             throw new System.NotImplementedException();
         }
 
-        public async Task<Account> Sacar(SacarCommand command)
+        public Notification Depositar(DepositarCommand command)
         {
             throw new System.NotImplementedException();
         }
 
-        public async Task<Account> VerificarSaldo(VerificarSaldoCommand command)
+        public Notification Sacar(SacarCommand command)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Notification VerificarSaldo(VerificarSaldoCommand command)
         {
             throw new System.NotImplementedException();
         }
