@@ -5,8 +5,8 @@ namespace FuncionalTest.Domain.Interfaces.IServices
 {
     public interface IAccountService
     {
-        Notification Sacar(SacarCommand command);
-        Notification Depositar(DepositarCommand command);
+        Notification Sacar(AccountCommand command);
+        Notification Depositar(AccountCommand command);
         Notification VerificarSaldo(VerificarSaldoCommand command);
         Notification CriarConta();
 

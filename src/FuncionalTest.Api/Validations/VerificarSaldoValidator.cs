@@ -1,13 +1,13 @@
 ﻿using FluentValidation;
-using FuncionalTest.Api.ViewModels;
+using FuncionalTest.Domain.Commands;
 
 namespace FuncionalTest.Api.Validations
 {
-    public class VerificarSaldoValidator : AbstractValidator<AccountModel>
+    public class VerificarSaldoValidator : AbstractValidator<VerificarSaldoCommand>
     {
         public VerificarSaldoValidator()
         {
-            RuleFor(c => c.Id)
+            RuleFor(c => c.Account.Id)
                 .Must(c => c != null)
                 .WithMessage("Id necessário");
         }

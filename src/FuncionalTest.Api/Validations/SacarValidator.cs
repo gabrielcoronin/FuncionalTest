@@ -1,13 +1,13 @@
 ﻿using FluentValidation;
-using FuncionalTest.Api.ViewModels;
+using FuncionalTest.Domain.Commands;
 
 namespace FuncionalTest.Api.Validations
 {
-    public class SacarValidator : AbstractValidator<AccountModel>
+    public class SacarValidator : AbstractValidator<AccountCommand>
     {
         public SacarValidator()
         {
-            RuleFor(c => c.Id)
+            RuleFor(c => c.Account.Id)
                .Must(c => c != null)
                .WithMessage("Id necessário");
 

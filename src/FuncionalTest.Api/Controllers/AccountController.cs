@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using FuncionalTest.Api.ViewModels;
+using FuncionalTest.Api.Validations;
 using FuncionalTest.Domain.Commands;
 using FuncionalTest.Domain.Interfaces.IServices;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace FuncionalTest.Api.Controllers
 {
@@ -21,39 +22,55 @@ namespace FuncionalTest.Api.Controllers
 
         [HttpGet]
         [Route("saldo")]
-        public IActionResult VerificarSaldo(AccountModel model)
+        public IActionResult VerificarSaldo(string contaId)
         {
-            var command = _mapper.Map<VerificarSaldoCommand>(model);
+            var conta = Guid.Parse(contaId);
+            var command = new VerificarSaldoCommand(conta);
+            var verificarSaldoValidator = new VerificarSaldoValidator();
+            var validation = verificarSaldoValidator.Validate(command);
 
             var notification = _accountService.VerificarSaldo(command);
 
-            if (notification.Success) return Ok(notification);
+            if (validation.IsValid && notification.Success)
+                return Ok(notification);
 
             return BadRequest(notification);
         }
 
         [HttpPatch]
         [Route("sacar")]
-        public IActionResult Sacar(AccountModel model)
+        public IActionResult Sacar(string contaId, string valor)
         {
-            var command = _mapper.Map<SacarCommand>(model);
+            var conta = Guid.Parse(contaId);
+            var valorSacado = double.Parse(valor);
+
+            var command = new AccountCommand(conta, valorSacado);
+            var sacarValidator = new SacarValidator();
+            var validation = sacarValidator.Validate(command);
 
             var notification = _accountService.Sacar(command);
 
-            if (notification.Success) return Ok(notification);
+            if (validation.IsValid && notification.Success)
+                return Ok(notification);
 
             return BadRequest(notification);
         }
 
         [HttpPatch]
         [Route("depositar")]
-        public IActionResult Depositar(AccountModel model)
+        public IActionResult Depositar(string contaId, string valor)
         {
-            var command = _mapper.Map<DepositarCommand>(model);
+            var conta = Guid.Parse(contaId);
+            var valorDepositado = double.Parse(valor);
+
+            var command = new AccountCommand(conta, valorDepositado);
+            var depositarValidator = new DepositarValidator();
+            var validation = depositarValidator.Validate(command);
 
             var notification = _accountService.Depositar(command);
 
-            if (notification.Success) return Ok(notification);
+            if (validation.IsValid && notification.Success)
+                return Ok(notification);
 
             return BadRequest(notification);
         }

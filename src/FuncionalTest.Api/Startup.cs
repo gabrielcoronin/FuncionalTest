@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace FuncionalTest.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+       
             services.AddDbContext<MeuDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
@@ -38,31 +40,13 @@ namespace FuncionalTest.Api
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddSwaggerConfig();
-
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo
-            //    {
-            //        Version = "v1",
-            //        Title = "Curso de API com AspNetCore 3.1 - Na Prática",
-            //        Description = "Arquitetura DDD",
-            //        TermsOfService = new Uri("http://www.mfrinfo.com.br"),
-            //        Contact = new OpenApiContact
-            //        {
-            //            Name = "Marcos Fabricio Rosa",
-            //            Email = "mfr@mail.com",
-            //            Url = new Uri("http://www.mfrinfo.com.br")
-            //        },
-            //        License = new OpenApiLicense
-            //        {
-            //            Name = "Termo de Licença de Uso",
-            //            Url = new Uri("http://www.mfrinfo.com.br")
-            //        }
-            //    });
-            //});
+            services.AddSwaggerConfig();          
 
             services.ResolveDependencies();
+
+            services.AddMvc(option => option.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,7 +54,13 @@ namespace FuncionalTest.Api
         {
             if (env.IsDevelopment())
             {
+                app.UseCors("Development");
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseCors("Development"); // Usar apenas nas demos => Configuração Ideal: Production
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
@@ -78,13 +68,6 @@ namespace FuncionalTest.Api
             app.UseRouting();
 
             app.UseSwaggerConfig();
-
-            //app.UseSwagger();
-            //app.UseSwaggerUI(c =>
-            //{
-            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Curso de API com AspNetCore 3.1");
-            //    c.RoutePrefix = string.Empty;
-            //});
 
             app.UseAuthorization();
 

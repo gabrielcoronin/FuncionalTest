@@ -3,6 +3,7 @@ using FuncionalTest.Domain.Interfaces.IRepositories;
 using FuncionalTest.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace FuncionalTest.Data.Repository
 {
@@ -14,18 +15,19 @@ namespace FuncionalTest.Data.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<Account> BuscarConta(Account account)
+        public Account BuscarConta(Account account)
         {
-            await _dbContext.Accounts
-                .AsNoTracking()
-                .FirstOrDefaultAsync(c => c.Id == account.Id);
-            return account;
+            var conta = (from _a in _dbContext.Accounts.AsNoTracking()
+                         where _a.Id == account.Id
+                         select _a).SingleOrDefault();
+
+            return conta;
         }
 
-        public async Task<Account> CriarConta(Account account)
+        public Account CriarConta(Account account)
         {
             _dbContext.Accounts.Add(account);
-            await _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
             return account;
         }
 
