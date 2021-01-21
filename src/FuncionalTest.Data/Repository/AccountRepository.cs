@@ -1,25 +1,45 @@
-﻿using FuncionalTest.Domain.Interfaces.IRepositories;
+﻿using FuncionalTest.Data.Context;
+using FuncionalTest.Domain.Interfaces.IRepositories;
 using FuncionalTest.Domain.Models;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace FuncionalTest.Data.Repository
 {
     public class AccountRepository : IAccountRepository
     {
-        public Task<Account> Depositar(Account account)
+        private readonly MeuDbContext _dbContext;
+        public AccountRepository(MeuDbContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
         }
 
-        public Task<Account> Sacar(Account account)
+        public async Task<Account> BuscarConta(Account account)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Accounts
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == account.Id);
         }
 
-        public Task<Account> VerificarSaldo(Account account)
+        public async Task<Account> CriarConta(Account account)
         {
-            throw new NotImplementedException();
+            _dbContext.Accounts.Add(account);
+            await _dbContext.SaveChangesAsync();
+            return account;
+        }
+
+        public async Task<Account> Depositar(Account account)
+        {
+            _dbContext.Attach(account).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+            return account;
+        }
+
+        public async Task<Account> Sacar(Account account)
+        {
+            _dbContext.Attach(account).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+            return account;
         }
     }
 }

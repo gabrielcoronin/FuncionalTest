@@ -7,6 +7,7 @@ namespace FuncionalTest.Domain.Interfaces.IRepositories
     {
         Task<Account> Sacar(Account account);
         Task<Account> Depositar(Account account);
-        Task<Account> VerificarSaldo(Account account);
+        Task<Account> BuscarConta(Account account);
+        Task<Account> CriarConta(Account account);
     }
 }
