@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using GraphiQl;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -82,6 +83,8 @@ namespace FuncionalTest.Api.Configuration
             {
                 endpoints.MapControllers();           
             });
+
+            app.UseGraphiQl();
 
             return app;
         }

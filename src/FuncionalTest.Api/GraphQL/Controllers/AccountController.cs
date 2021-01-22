@@ -1,33 +1,45 @@
-﻿using FuncionalTest.Api.Validations;
-using FuncionalTest.Domain.REST.Commands;
-using FuncionalTest.Domain.REST.Interfaces.IServices;
+﻿using FuncionalTest.Api.GraphQL;
+using FuncionalTest.Api.GraphQL.Queries;
+using GraphQL;
 using Microsoft.AspNetCore.Mvc;
-using System;
+using System.Threading.Tasks;
 
 namespace FuncionalTest.Api.V2.Controllers
 {
     [ApiController]
     [ApiVersion("2.0")]
-    [Route("api/v{version:apiVersion}/account")]
-    public class AccountController : Controller
+    [Route("api/v{version:apiVersion}/graphql")]
+    public class AccountController : ControllerBase
     {
-        private readonly IAccountService _accountService;
+        private readonly AccountSchema _schema;
 
-        public AccountController(IAccountService accountService)
+        public AccountController(AccountSchema schema)
         {
-            _accountService = accountService;
+            _schema = schema;
         }
-             
 
         [HttpPost]
-        [Route("criarConta")]
-        public IActionResult Criarconta()
-        {            
-            var notification = _accountService.CriarConta();
+        public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
+        {
+            Inputs inputs = query.Variables.ToInputs();
 
-            if (notification.Success) return Ok(notification);
+            var schema = _schema;
 
-            return BadRequest(notification);
+            var result = await new DocumentExecuter().ExecuteAsync(_ =>
+            {
+                _.Schema = schema;
+                _.Query = query.Query;
+                _.OperationName = query.OperationName;
+                _.Inputs = inputs;
+            }).ConfigureAwait(false);
+
+            if (result.Errors?.Count > 0)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
         }
+
     }
 }
