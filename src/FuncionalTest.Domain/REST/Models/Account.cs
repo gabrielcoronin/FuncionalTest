@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FuncionalTest.Domain.Models
+namespace FuncionalTest.Domain.REST.Models
 {
     public class Account
     {

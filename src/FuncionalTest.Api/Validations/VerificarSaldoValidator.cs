@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using FuncionalTest.Domain.Commands;
+using FuncionalTest.Domain.REST.Commands;
 
 namespace FuncionalTest.Api.Validations
 {

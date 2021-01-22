@@ -1,11 +1,11 @@
-﻿using FuncionalTest.Data.Context;
-using FuncionalTest.Domain.Interfaces.IRepositories;
-using FuncionalTest.Domain.Models;
+﻿using FuncionalTest.Data.REST.Context;
+using FuncionalTest.Domain.REST.Interfaces.IRepositories;
+using FuncionalTest.Domain.REST.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
 
-namespace FuncionalTest.Data.Repository
+namespace FuncionalTest.Data.REST.Repository
 {
     public class AccountRepository : IAccountRepository
     {

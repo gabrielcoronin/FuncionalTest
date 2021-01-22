@@ -1,5 +1,5 @@
 using FuncionalTest.Api.Configuration;
-using FuncionalTest.Data.Context;
+using FuncionalTest.Data.REST.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

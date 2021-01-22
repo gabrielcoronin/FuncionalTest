@@ -1,9 +1,9 @@
-﻿using FuncionalTest.Data.Context;
-using FuncionalTest.Domain.Commands;
-using FuncionalTest.Domain.Interfaces.IRepositories;
-using FuncionalTest.Domain.Interfaces.IServices;
-using FuncionalTest.Domain.Models;
-using FuncionalTest.Domain.Services;
+﻿using FuncionalTest.Data.REST.Context;
+using FuncionalTest.Domain.REST.Commands;
+using FuncionalTest.Domain.REST.Interfaces.IRepositories;
+using FuncionalTest.Domain.REST.Interfaces.IServices;
+using FuncionalTest.Domain.REST.Models;
+using FuncionalTest.Domain.REST.Services;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;

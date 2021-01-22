@@ -1,8 +1,8 @@
-﻿using FuncionalTest.Data.Context;
-using FuncionalTest.Data.Repository;
-using FuncionalTest.Domain.Interfaces.IRepositories;
-using FuncionalTest.Domain.Interfaces.IServices;
-using FuncionalTest.Domain.Services;
+﻿using FuncionalTest.Data.REST.Context;
+using FuncionalTest.Data.REST.Repository;
+using FuncionalTest.Domain.REST.Interfaces.IRepositories;
+using FuncionalTest.Domain.REST.Interfaces.IServices;
+using FuncionalTest.Domain.REST.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;

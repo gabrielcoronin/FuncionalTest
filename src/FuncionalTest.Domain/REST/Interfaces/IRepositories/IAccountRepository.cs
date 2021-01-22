@@ -1,7 +1,7 @@
-﻿using FuncionalTest.Domain.Models;
+﻿using FuncionalTest.Domain.REST.Models;
 using System.Threading.Tasks;
 
-namespace FuncionalTest.Domain.Interfaces.IRepositories
+namespace FuncionalTest.Domain.REST.Interfaces.IRepositories
 {
     public interface IAccountRepository
     {
