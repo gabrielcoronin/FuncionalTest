@@ -1,4 +1,4 @@
-﻿using FuncionalTest.Domain.REST.Models;
+﻿using FuncionalTest.Domain.Models;
 using GraphQL.Types;
 
 namespace FuncionalTest.Api.GraphQL.Types

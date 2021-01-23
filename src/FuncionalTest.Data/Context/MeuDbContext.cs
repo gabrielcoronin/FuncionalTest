@@ -1,8 +1,8 @@
-﻿using FuncionalTest.Domain.REST.Models;
+﻿using FuncionalTest.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace FuncionalTest.Data.REST.Context
+namespace FuncionalTest.Data.Context
 {
 
     public class MeuDbContext : DbContext

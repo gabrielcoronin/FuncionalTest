@@ -1,10 +1,10 @@
-﻿using FuncionalTest.Domain.REST.Commands;
-using FuncionalTest.Domain.REST.Interfaces.IRepositories;
-using FuncionalTest.Domain.REST.Interfaces.IServices;
-using FuncionalTest.Domain.REST.Models;
-using FuncionalTest.Domain.REST.Notifications;
+﻿using FuncionalTest.Domain.Commands;
+using FuncionalTest.Domain.Interfaces.IRepositories;
+using FuncionalTest.Domain.Interfaces.IServices;
+using FuncionalTest.Domain.Models;
+using FuncionalTest.Domain.Notifications;
 
-namespace FuncionalTest.Domain.REST.Services
+namespace FuncionalTest.Domain.Services
 {
     public class AccountService : IAccountService
     {

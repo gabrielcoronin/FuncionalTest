@@ -1,14 +1,13 @@
-﻿using FuncionalTest.Api.GraphQL;
-using FuncionalTest.Api.GraphQL.Mutations;
-using FuncionalTest.Api.GraphQL.Queries;
+﻿using FuncionalTest.Api.GraphQL.Queries;
+using FuncionalTest.Api.GraphQL.Schemas;
 using FuncionalTest.Api.GraphQL.Types;
-using FuncionalTest.Data.GraphQL.Repositories;
-using FuncionalTest.Data.REST.Context;
-using FuncionalTest.Data.REST.Repository;
-using FuncionalTest.Domain.REST.Interfaces.IRepositories;
-using FuncionalTest.Domain.REST.Interfaces.IServices;
-using FuncionalTest.Domain.REST.Services;
+using FuncionalTest.Data.Context;
+using FuncionalTest.Data.Repository;
+using FuncionalTest.Domain.Interfaces.IRepositories;
+using FuncionalTest.Domain.Interfaces.IServices;
+using FuncionalTest.Domain.Services;
 using GraphQL;
+using GraphQL.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -28,13 +27,11 @@ namespace FuncionalTest.Api.Configuration
 
 
             services.AddSingleton<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
-            services.AddTransient<Repository, Repository>();
+            services.AddScoped<IDocumentExecuter, DocumentExecuter>();
+            services.AddScoped<IDocumentWriter, DocumentWriter>();
             services.AddScoped<AccountSchema>();
             services.AddScoped<AccountQuery>();
-            services.AddScoped<AccountMutation>();
             services.AddScoped<AccountType>();
-            services.AddScoped<AccountInputType>();
-
 
             return services;
         }

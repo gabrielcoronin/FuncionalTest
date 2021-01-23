@@ -1,4 +1,4 @@
-﻿namespace FuncionalTest.Domain.REST.Notifications
+﻿namespace FuncionalTest.Domain.Notifications
 {
     public class Message
     {

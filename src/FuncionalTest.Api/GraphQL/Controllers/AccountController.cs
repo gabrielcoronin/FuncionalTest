@@ -1,5 +1,6 @@
 ﻿using FuncionalTest.Api.GraphQL;
 using FuncionalTest.Api.GraphQL.Queries;
+using FuncionalTest.Api.GraphQL.Schemas;
 using GraphQL;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace FuncionalTest.Api.V2.Controllers
     [ApiController]
     [ApiVersion("2.0")]
     [Route("api/v{version:apiVersion}/graphql")]
-    public class AccountController : ControllerBase
+    public class AccountController : Controller
     {
         private readonly AccountSchema _schema;
 

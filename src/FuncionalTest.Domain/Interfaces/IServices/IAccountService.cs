@@ -1,7 +1,7 @@
-﻿using FuncionalTest.Domain.REST.Commands;
-using FuncionalTest.Domain.REST.Notifications;
+﻿using FuncionalTest.Domain.Commands;
+using FuncionalTest.Domain.Notifications;
 
-namespace FuncionalTest.Domain.REST.Interfaces.IServices
+namespace FuncionalTest.Domain.Interfaces.IServices
 {
     public interface IAccountService
     {
