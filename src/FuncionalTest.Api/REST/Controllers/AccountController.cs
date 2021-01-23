@@ -1,6 +1,6 @@
 ﻿using FuncionalTest.Api.Validations;
-using FuncionalTest.Domain.REST.Commands;
-using FuncionalTest.Domain.REST.Interfaces.IServices;
+using FuncionalTest.Domain.Commands;
+using FuncionalTest.Domain.Interfaces.IServices;
 using Microsoft.AspNetCore.Mvc;
 using System;
 

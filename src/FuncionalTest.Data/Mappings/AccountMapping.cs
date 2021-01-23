@@ -1,8 +1,8 @@
-﻿using FuncionalTest.Domain.REST.Models;
+﻿using FuncionalTest.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FuncionalTest.Data.REST.Mappings
+namespace FuncionalTest.Data.Mappings
 {
     public class AccountMapping : IEntityTypeConfiguration<Account>
     {

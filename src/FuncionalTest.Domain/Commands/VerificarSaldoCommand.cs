@@ -1,7 +1,7 @@
-﻿using FuncionalTest.Domain.REST.Models;
+﻿using FuncionalTest.Domain.Models;
 using System;
 
-namespace FuncionalTest.Domain.REST.Commands
+namespace FuncionalTest.Domain.Commands
 {
     public class VerificarSaldoCommand
     {

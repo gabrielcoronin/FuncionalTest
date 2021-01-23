@@ -1,5 +1,6 @@
 using FuncionalTest.Api.Configuration;
-using FuncionalTest.Data.REST.Context;
+using FuncionalTest.Data.Context;
+using GraphiQl;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -55,7 +56,7 @@ namespace FuncionalTest.Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             app.UseApiConfig(env);
-
+            app.UseGraphiQl("/graphql");
             app.UseSwaggerConfig(provider);
         }
     }

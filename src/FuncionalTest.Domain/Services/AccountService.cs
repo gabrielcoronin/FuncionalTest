@@ -1,10 +1,10 @@
-﻿using FuncionalTest.Domain.REST.Commands;
-using FuncionalTest.Domain.REST.Interfaces.IRepositories;
-using FuncionalTest.Domain.REST.Interfaces.IServices;
-using FuncionalTest.Domain.REST.Models;
-using FuncionalTest.Domain.REST.Notifications;
+﻿using FuncionalTest.Domain.Commands;
+using FuncionalTest.Domain.Interfaces.IRepositories;
+using FuncionalTest.Domain.Interfaces.IServices;
+using FuncionalTest.Domain.Models;
+using FuncionalTest.Domain.Notifications;
 
-namespace FuncionalTest.Domain.REST.Services
+namespace FuncionalTest.Domain.Services
 {
     public class AccountService : IAccountService
     {
@@ -25,8 +25,8 @@ namespace FuncionalTest.Domain.REST.Services
             var entity = _accountRepository.CriarConta(account);
 
             return Notification.CreateSuccess(null, null, 200,
-                $"Conta -> { entity.Id}\n" +
-                $"Saldo atual -> {entity.Saldo}");
+                $"Conta -> { entity.Result.Id}\n" +
+                $"Saldo atual -> {entity.Result.Saldo}");
         }
 
         public Notification Depositar(AccountCommand command)
@@ -43,7 +43,7 @@ namespace FuncionalTest.Domain.REST.Services
 
             return Notification.CreateSuccess(null, null, 200,
                 $"Conta -> { command.Account.Id}\n" +
-                $"Valor depositado -> {command.Valor}\n" +
+                $"Valor depositado -> {command.Valor} |" +
                 $"Saldo atual -> {conta.Saldo}");
         }
 
@@ -63,8 +63,8 @@ namespace FuncionalTest.Domain.REST.Services
             var entity = _accountRepository.Sacar(command.Account);
 
             return Notification.CreateSuccess(null, null, 200,
-                $"Conta -> { command.Account.Id}\n" +
-                $"Valor sacado -> {command.Valor}\n" + 
+                $"Conta -> { command.Account.Id} | " +
+                $"Valor sacado -> {command.Valor} |" + 
                 $"Saldo atual -> {conta.Saldo}");
         }
 
@@ -76,7 +76,7 @@ namespace FuncionalTest.Domain.REST.Services
                 return Notification.CreateError(message: "Conta inválida");
 
             return Notification.CreateSuccess(null, null, 200,
-                $"Conta -> { command.Account.Id}\n" +
+                $"Conta -> { command.Account.Id} |" +
                 $"Saldo atual -> {conta.Saldo}");
         }
     }
