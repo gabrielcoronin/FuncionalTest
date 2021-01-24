@@ -12,6 +12,9 @@ namespace FuncionalTest.Data.Mappings
 
             builder.Property(c => c.Saldo)
                 .IsRequired();
+
+            builder.Ignore(c => c.Message);           
+
         }
     }
 }

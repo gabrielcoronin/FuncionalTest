@@ -1,9 +1,8 @@
 ﻿using FuncionalTest.Domain.Commands;
+using FuncionalTest.Domain.Exceptions;
 using FuncionalTest.Domain.Interfaces.IRepositories;
 using FuncionalTest.Domain.Interfaces.IServices;
 using FuncionalTest.Domain.Models;
-using FuncionalTest.Domain.Notifications;
-using System;
 using System.Threading.Tasks;
 
 namespace FuncionalTest.Domain.Services
@@ -31,6 +30,9 @@ namespace FuncionalTest.Domain.Services
         {
             var conta = _accountRepository.BuscarConta(command.Account);
 
+            if (command.Account.Id == null || conta.Id == null)
+                throw new AccountException("Conta inválida");
+
             conta.Saldo += command.Valor;
             command.Account.Saldo = conta.Saldo;
 
@@ -39,7 +41,13 @@ namespace FuncionalTest.Domain.Services
 
         public async Task<Account> Sacar(AccountCommand command)
         {       
-            var conta = _accountRepository.BuscarConta(command.Account);       
+            var conta = _accountRepository.BuscarConta(command.Account);
+
+            if (command.Account.Id == null || conta.Id == null)
+                throw new AccountException("Conta inválida");
+
+            if (conta.Saldo < command.Valor || conta.Saldo <= 0)
+                throw new AccountException("O valor que você deseja sacar ultrapassar o limite de saldo da conta, tente outro valor.");
 
             conta.Saldo -= command.Valor;
             command.Account.Saldo = conta.Saldo;
@@ -49,6 +57,9 @@ namespace FuncionalTest.Domain.Services
 
         public Account VerificarSaldo(VerificarSaldoCommand command)
         {
+            if (command.Account.Id == null)
+                throw new AccountException("Conta inválida");
+
             return _accountRepository.BuscarConta(command.Account);
         }
     }
