@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "2952f5de-60f1-482b-989d-a0ae2e396500",
+		"name": "FuncionalTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GraphQL",
+			"item": [
+				{
+					"name": "criarConta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  criarConta\r\n  {\r\n    id\r\n    saldo\r\n  }\r\n}",
+								"variables": ""
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44320/api/v2/graphql",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44320",
+							"path": [
+								"api",
+								"v2",
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sacar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  sacar (contaId : \"d08cbc12-173e-465d-deb3-08d8be1ed60c\", valor : 70)\r\n  {\r\n    id\r\n    saldo\r\n  }\r\n}",
+								"variables": ""
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44320/api/v2/graphql",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44320",
+							"path": [
+								"api",
+								"v2",
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "depositar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  depositar (contaId : \"d08cbc12-173e-465d-deb3-08d8be1ed60c\", valor : 50)\r\n  {\r\n    id\r\n    saldo\r\n  }\r\n}",
+								"variables": ""
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44320/api/v2/graphql",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44320",
+							"path": [
+								"api",
+								"v2",
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saldo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  saldo (id : \"d08cbc12-173e-465d-deb3-08d8be1ed60c\")\r\n  {\r\n    id\r\n    saldo\r\n  }\r\n}",
+								"variables": ""
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44320/api/v2/graphql",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44320",
+							"path": [
+								"api",
+								"v2",
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "REST",
+			"item": [
+				{
+					"name": "saldo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44320/api/v1/account/saldo?contaId=d08cbc12-173e-465d-deb3-08d8be1ed60c",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44320",
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"saldo"
+							],
+							"query": [
+								{
+									"key": "contaId",
+									"value": "d08cbc12-173e-465d-deb3-08d8be1ed60c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sacar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44320/api/v1/account/sacar?contaId=d08cbc12-173e-465d-deb3-08d8be1ed60c&valor=50",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44320",
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"sacar"
+							],
+							"query": [
+								{
+									"key": "contaId",
+									"value": "d08cbc12-173e-465d-deb3-08d8be1ed60c"
+								},
+								{
+									"key": "valor",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "depositar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44320/api/v1/account/depositar?contaId=d08cbc12-173e-465d-deb3-08d8be1ed60c&valor=50",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44320",
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"depositar"
+							],
+							"query": [
+								{
+									"key": "contaId",
+									"value": "d08cbc12-173e-465d-deb3-08d8be1ed60c"
+								},
+								{
+									"key": "valor",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "criarConta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44320/api/v1/account/criarConta",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44320",
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"criarConta"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
